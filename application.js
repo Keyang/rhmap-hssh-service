@@ -12,8 +12,22 @@ securableEndpoints = [];
 
 var app = express();
 var server=require("http").Server(app);
+var rhmapAuth=require("rhmap-auth");
 require("hssh")(server,{
-  banner:"Welcome to RHMAP shell."
+  banner:"Welcome to RHMAP shell.",
+  auth:{
+    info:"Please provid RHMAP username and password.",
+    onAuth:function(obj,cb){
+      rhmapAuth(obj.username,obj.password,function(err,isValid){
+          if (isValid===true){
+            cb(true);
+          }else{
+            cb(false);
+          }
+      });
+    }
+  },
+  log:"debug"
 });
 // Enable CORS for all requests
 app.use(cors());
