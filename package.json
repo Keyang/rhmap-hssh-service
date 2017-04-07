@@ -11,7 +11,7 @@
   "dependencies": {
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "fh-mbaas-api": "^5.14.2",
+    "fh-mbaas-api": "4.12.0",
     "hssh": "^1.0.2",
     "rhmap-auth": "^1.0.0"
   }
